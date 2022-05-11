@@ -162,7 +162,7 @@ Apollo支持配置按照集群划分，也就是说对于一个appId和一个环
 ``` diff
     WebHost.CreateDefaultBuilder(args)
 +       .ConfigureAppConfiguration(builder => builder
-+           .AddApollo(builder.Build().GetSection("apollo")))
++           .AddApollo(builder.Build().GetSection("apollo"))).AddDefault()
         .UseStartup<Startup>()
 ```
 
@@ -170,8 +170,8 @@ Apollo支持配置按照集群划分，也就是说对于一个appId和一个环
 
 ``` diff
     WebHost.CreateDefaultBuilder(args)
-+       .ConfigureAppConfiguration((cotnext, builder) => builder
-+           .AddApollo(cotnext.Configuration.GetSection("apollo")))
++       .ConfigureAppConfiguration((context, builder) => builder
++           .AddApollo(context.Configuration.GetSection("apollo"))).AddDefault()
         .UseStartup<Startup>()
 ```
 
